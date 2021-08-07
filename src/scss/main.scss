@@ -1,0 +1,151 @@
+@import "./_globalVariables";
+
+.background {
+  background-color: hsl(233, 47%, 7%);
+  height: 100vh;
+  overflow: auto;
+  @include flex-box(row, center, center);
+  .stat-container {
+    @include flex-box(row, center, stretch);
+    background-color: hsl(244, 38%, 16%);
+
+    border-radius: $border-radius;
+    // To center the card horzontally
+    margin: 0 auto;
+
+    // The width of the card when the viewport shrinks
+    width: 90%;
+    // The max width of the card. The card won't increase beyond this width
+    max-width: 960px;
+    .col {
+      color: hsl(0, 0%, 100%);
+      font-family: "Lexend Deca", sans-serif;
+      width: 50%;
+    }
+
+    .col-info {
+      font-size: 1.75rem;
+      padding: 2em;
+
+      // Add a margin to the bottom of the main title
+      h1 {
+        margin-bottom: 1.25em;
+      }
+
+      p {
+        font-size: 15px;
+        color: hsla(0, 0%, 100%, 0.75);
+        margin-bottom: 4.5em;
+        font-family: "Inter", sans-serif;
+      }
+
+      .stat-number {
+        @include flex-box(row, flex-start, center);
+        p {
+          margin: 0;
+          font-size: 0.8rem;
+          color: hsla(0, 0%, 100%, 0.6);
+        }
+
+        div {
+          margin: 0 2.25em 0 0;
+        }
+      }
+    }
+    .img-col {
+      background-color: hsl(277, 64%, 61%);
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      img {
+        mix-blend-mode: multiply;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+// For tab view.
+@media (max-width: 1000px) {
+  .background {
+    height: auto;
+    .stat-container {
+      flex-direction: column-reverse;
+      background-color: hsl(244, 38%, 16%);
+
+      // Margin top and bottom
+      margin: 2.5em 0;
+
+      .col {
+        width: 100%;
+      }
+
+      .col-info {
+        text-align: center;
+        .stat-number {
+          width: 100%;
+          justify-content: space-around;
+
+          // Remove the margin add originally
+          div {
+            margin: 0;
+          }
+        }
+      }
+
+      // To get rid of the 4px space for the container
+      .img-col {
+        font-size: 0;
+        border-top-left-radius: $border-radius;
+        border-bottom-right-radius: 0;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+// For mobile view
+@media (max-width: 767px) {
+  .background {
+    height: auto;
+    .stat-container {
+      flex-direction: column-reverse;
+      background-color: hsl(244, 38%, 16%);
+
+      // Margin top and bottom
+      margin: 3.75em 0;
+
+      .col {
+        width: 100%;
+      }
+
+      .col-info {
+        font-size: 1.4rem;
+        text-align: center;
+        .stat-number {
+          width: 100%;
+          flex-direction: column;
+
+          // Remove the margin add originally
+          div {
+            margin: 1em 0;
+          }
+        }
+      }
+
+      // To get rid of the 4px space for the container
+      .img-col {
+        font-size: 0;
+        border-top-left-radius: $border-radius;
+        border-bottom-right-radius: 0;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
